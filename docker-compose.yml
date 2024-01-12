@@ -1,0 +1,23 @@
+services:
+
+  ansible:
+    build:
+      context: .
+      dockerfile: ansible.Dockerfile
+      args:
+        UID: 1001
+        GID: 1001
+    tty: true
+    working_dir: /home/ansible
+    volumes:
+      - ./project:/home/ansible/project
+
+  target:
+    build:
+      context: .
+      dockerfile: target.Dockerfile
+      args:
+        UID: 1001
+        GID: 1001
+    ports:
+      - ${SSH_PORT:-2222}:22
