@@ -8,7 +8,7 @@ services:
         UID: 1001
         GID: 1001
     tty: true
-    working_dir: /home/ansible
+    working_dir: /home/ansible/project
     volumes:
       - ./project:/home/ansible/project
 
